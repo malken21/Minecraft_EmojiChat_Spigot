@@ -1,4 +1,6 @@
-name: Emoji
+name: EmojiChat
 version: '${version}'
 main: marumasa.emoji.minecraft
 api-version: 1.19
+
+softdepend: [LunaChat]

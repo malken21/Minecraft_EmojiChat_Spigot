@@ -1,10 +1,9 @@
 package marumasa.emoji;
 
-import com.github.ucchyocean.lc.event.LunaChatBaseCancellableEvent;
-import com.github.ucchyocean.lc3.bukkit.event.LunaChatBukkitBaseCancellableEvent;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,13 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class Event implements Listener {
+public class LunaChatEvent implements Listener {
 
     private final Config con;
     private final Logger logger = Bukkit.getLogger();
     private final Server.Spigot spigot = Bukkit.spigot();
 
-    public Event(Config config) {
+    public LunaChatEvent(Config config) {
         con = config;
     }
 
@@ -36,7 +35,13 @@ public class Event implements Listener {
             return;
         }
 
-        final BaseComponent result = new TextComponent("<" + event.getPlayer().getDisplayName() + "> ");
+        final BaseComponent result = new TextComponent(
+                event.getPlayer().getDisplayName() +
+                        ChatColor.GREEN +
+                        ": " +
+                        ChatColor.RESET
+        );
+
         for (BaseComponent component : message) {
             result.addExtra(component);
         }
